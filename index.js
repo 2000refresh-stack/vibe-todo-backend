@@ -67,6 +67,12 @@ app.use((err, req, res, next) => {
 // MongoDB 연결 URI (환경변수 MONGODB_URI가 있으면 사용, 없으면 로컬 기본값 사용)
 const mongoDbUri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/todo';
 
+// 디버깅: 연결 URI 확인 (비밀번호 제외)
+if (mongoDbUri.includes('@')) {
+	const safeUri = mongoDbUri.replace(/\/\/([^:]+):([^@]+)@/, '//***:***@');
+	console.log('MongoDB URI:', safeUri);
+}
+
 // MongoDB 연결 및 서버 시작 함수
 async function connectDbAndStartServer() {
 	try {
