@@ -23,6 +23,9 @@ npm start
 - 환경 변수가 필요하다면 루트에 `.env` 파일을 추가하세요. (예: `PORT=3000`)
 - `.env`는 `.gitignore`에 포함되어 커밋되지 않습니다. 공유가 필요하면 `./.env.example`를 만들어 키만 예시로 남겨주세요.
 
+### Heroku 배포 시 필수 환경 변수
+- `MONGODB_URI`: MongoDB Atlas 연결 문자열 (예: `mongodb+srv://user:pass@cluster.xxx.mongodb.net/todo`)
+
 ## 스크립트
 - `npm start` : 프로덕션 실행 (`node index.js`)
 
