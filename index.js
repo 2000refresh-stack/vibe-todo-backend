@@ -58,6 +58,12 @@ app.use((req, res) => {
 	return res.status(404).json({ message: 'Not Found', path: req.originalUrl, method: req.method });
 });
 
+// 전역 에러 핸들러 (500 에러 처리)
+app.use((err, req, res, next) => {
+	console.error('서버 에러:', err);
+	return res.status(500).json({ message: 'Internal Server Error', error: err.message });
+});
+
 // MongoDB 연결 URI (환경변수 MONGODB_URI가 있으면 사용, 없으면 로컬 기본값 사용)
 const mongoDbUri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/todo';
 
