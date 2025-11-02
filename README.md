@@ -26,6 +26,15 @@ npm start
 ### Heroku 배포 시 필수 환경 변수
 - `MONGODB_URI`: MongoDB Atlas 연결 문자열 (예: `mongodb+srv://user:pass@cluster.xxx.mongodb.net/todo`)
 
+### MongoDB Atlas Network Access 설정
+Heroku에서 MongoDB 연결을 위해 **MongoDB Atlas Network Access**를 설정해야 합니다:
+1. MongoDB Atlas Dashboard → Network Access
+2. **Add IP Address** 클릭
+3. **Allow Access from Anywhere** 선택 (`0.0.0.0/0`)
+4. **Confirm** 클릭
+
+⚠️ **주의**: 프로덕션 환경에서는 보안을 위해 필요한 IP만 허용하는 것을 권장합니다.
+
 ## 스크립트
 - `npm start` : 프로덕션 실행 (`node index.js`)
 
