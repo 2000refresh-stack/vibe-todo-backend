@@ -71,13 +71,14 @@ const mongoDbUri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/todo';
 async function connectDbAndStartServer() {
 	try {
 		// MongoDB에 연결합니다.
+		console.log('MongoDB 연결 시도 중...');
 		await mongoose.connect(mongoDbUri);
 
 		// 연결 성공 시 로그 출력
 		console.log('연결성공');
 	} catch (connectionError) {
-		// 연결 실패 시 경고만 출력하고 서버는 계속 시작
-		console.error('MongoDB 연결 실패:', connectionError);
+		// 연결 실패 시 상세 로그 출력
+		console.error('MongoDB 연결 실패:', connectionError.message);
 		console.warn('⚠️  MongoDB 없이 서버를 시작합니다. 일부 기능이 동작하지 않을 수 있습니다.');
 	}
 
